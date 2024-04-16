@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条形码识别结果</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">条形码识别结果</h1>
+        {% if image_file %}
+        <div class="mb-4">
+            <img src="{{ url_for('uploaded_file', filename=image_file)}}" class="img-thumbnail">
+        </div>
+        {% endif %}
+        {% if barcodes %}
+            <ul class="list-group">
+                {% for barcode_type, barcode_data in barcodes %}
+                    <li class="list-group-item">类型: {{ barcode_type }} 数据: {{ barcode_data }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <!-- 如果没有识别到条形码，显示这条消息 -->
+            <div class="alert alert-warning" role="alert">
+                没有识别到条形码。
+            </div>
+        {% endif %}
+        <a href="/" class="btn btn-primary mt-4">返回上传页面</a>
+    </div>
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

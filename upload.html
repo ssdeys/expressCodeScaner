@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传条形码图片</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">上传条形码图片</h1>
+        <form method="post" enctype="multipart/form-data" class="mb-3">
+            <div class="custom-file mb-3">
+                <input type="file" class="custom-file-input" id="file" name="file" required>
+                <label class="custom-file-label" for="file">选择文件</label>
+            </div>
+            <button type="submit" class="btn btn-primary">上传</button>
+        </form>
+    </div>
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // 更新文件选择标签的显示文本
+        $('.custom-file-input').on('change', function() {
+            var fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').html(fileName);
+        });
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传条形码图片</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">上传条形码图片</h1>
+        {% if error_message %}
+        <div class="alert alert-warning" role="alert">
+            {{ error_message }}
+        </div>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data" class="mb-3">
+            <div class="custom-file mb-4">
+                <!-- 添加 capture="environment" 和 accept="image/*" 以启用拍照功能 -->
+                <input type="file" class="custom-file-input" id="file" name="file" required capture="environment" accept="image/*">
+                <label class="custom-file-label" for="file">选择文件或拍照上传</label>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">上传</button>
+        </form>
+    </div>
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // 更新文件选择标签的显示文本
+        $('.custom-file-input').on('change', function() {
+            var fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+    </script>
+</body>
+</html>

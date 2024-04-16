@@ -1,0 +1,52 @@
+<!-- records.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Records</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>条形码和图片记录</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">单号</th>
+                    <th scope="col">图片</th>
+                    <th scope="col">派送人</th>
+                    <th scope="col">地址</th>
+                    <th scope="col">拍照日期</th>
+                    <th scope="col">时间</th>
+                </tr>
+            </thead>
+            <!-- ... [其他 HTML 代码] ... -->
+
+<tbody>
+    {% for record in records %}
+    <tr>
+        <th scope="row">{{ loop.index }}</th>
+        <td>{{ record[0] }}</td>
+        <td>
+            <!-- 正确使用 Base64 编码的图片数据 -->
+            <img src="data:image/jpeg;base64,{{ record[1] }}" alt="Barcode Image" height="100">
+        </td>
+        <td>{{ record[2] }}</td>
+        <td>{{ record[3] }}</td>
+        <td>{{ record[4] }}</td>
+        <td>{{ record[5] }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+
+<!-- ... [其他 HTML 代码] ... -->
+        </table>
+    </div>
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
